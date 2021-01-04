@@ -30,8 +30,8 @@ workflows:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
-      - create_infrastructure
       - print_hello
       - print_world:
           requires:
             - print_hello
+      - create_infrastructure
