@@ -21,12 +21,16 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - run: echo world
+  create_infrastructure:
+    docker:
+      - image: amazon/aws-cli
 workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
     jobs:
       - welcome/run
+      - create_infrastructure
       - print_hello
       - print_world:
           requires:
